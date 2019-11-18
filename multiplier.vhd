@@ -30,6 +30,11 @@ architecture arch_ASM_mult of ASM_multiplier is
               status     : out std_logic_vector(W_STATUS-1  downto 0);
               r          : out std_logic_vector(W_RESULT-1  downto 0) );
     end component data_path;
+	 
+	 component conv_7seg
+    Port ( x : in  STD_LOGIC_VECTOR (3 downto 0);
+           display : out  STD_LOGIC_VECTOR (6 downto 0));
+	 end component conv_7seg;
 
     signal status  : std_logic_vector(W_STATUS-1  downto 0);
     signal control : std_logic_vector(W_CONTROL-1 downto 0);
@@ -47,5 +52,7 @@ begin
     U_DP: data_path
         port map(CLOCK_24, not(KEY(0)), SW(3 downto 0), SW(7 downto 4), control, status, output);
 		  
+	 LCD_1: conv_7seg port map(output(3 downto 0), HEX0);
+	 LCD_2: conv_7seg port map(output(7 downto 4), HEX1);
 
 end arch_ASM_mult;
