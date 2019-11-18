@@ -37,7 +37,7 @@ architecture arch_dp of data_path is
     end component left_right_shift_reg;
 
     -- INTERMEDIATE SIGNALS...
-   signal op_a, op_b: std_logic_vector(W_FACTORS-1 downto 0);
+    signal op_a, op_b: std_logic_vector(W_FACTORS-1 downto 0);
 	signal op_n, op_acc, substraction, acc_plus_a: std_logic_vector(W_RESULT-1 downto 0);
 	signal mux_n_out, mux_acc_out: std_logic_vector(W_RESULT-1 downto 0);
 	
@@ -50,6 +50,7 @@ architecture arch_dp of data_path is
 	
 	
 begin
+    -- r <= "10101010";
 	r <= op_acc;
 	num_one(0) <= '1';
 	num_four(2) <= '1';
@@ -79,18 +80,33 @@ begin
 
 	process(control,substraction,acc_plus_a)
 	begin
+	
 		-- Multiplexors
-		if(control(mux_n) = '0')then
-			mux_n_out <= substraction;
-		else
-			mux_n_out <= num_four;
-		end if;
 		
-		if(control(mux_acc) = '0')then
-			mux_n_out <= acc_plus_a;
-		else
-			mux_n_out <= num_zero;
-		end if;
+--		if(control(mux_n) = '0')then
+--			mux_n_out <= substraction;
+--		else
+--			mux_n_out <= num_four;
+--		end if;
+		
+--		if(control(mux_acc) = '0')then
+--			mux_n_out <= acc_plus_a;
+--		else
+--			mux_n_out <= num_zero;
+--		end if;
+		
+		CASE control(mux_n) IS
+		WHEN '0' => mux_n_out <= substraction;
+        WHEN OTHERS => mux_n_out <= num_four;
+		END CASE;
+		
+		CASE control(mux_acc) IS
+		WHEN '0' => mux_acc_out <= acc_plus_a;
+        WHEN OTHERS => mux_acc_out <= num_zero;
+		END CASE;
+		
+		
+		
 	end process;
 	
 	process(op_b,op_n)

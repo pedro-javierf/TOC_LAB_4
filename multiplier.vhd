@@ -3,10 +3,9 @@ use ieee.std_logic_1164.all;
 use work.definitions.all;
 
 entity ASM_multiplier is
-    port( reset, CLOCK_24, init : in  std_logic;
-          SW               : in  std_logic_vector(9 downto 0);
+    port( reset, clk, init : in  std_logic;
+          a_in, b_in       : in  std_logic_vector(W_FACTORS-1 downto 0);
           done             : out std_logic;
-			 LEDR					: out std_logic_vector(9 downto 0);
           r                : out std_logic_vector(W_RESULT-1  downto 0) );
 end ASM_multiplier;
 
@@ -30,12 +29,11 @@ architecture arch_ASM_mult of ASM_multiplier is
     signal status  : std_logic_vector(W_STATUS-1  downto 0);
     signal control : std_logic_vector(W_CONTROL-1 downto 0);
 begin
-	
+
     U_CNTRL: controller
-        port map(CLOCK_24, '0', '1', status, control, done);
+        port map(clk, reset, init, status, control, done);
 
     U_DP: data_path
-        port map(CLOCK_24, '0', SW(3 downto 0), SW(7 downto 4), control, status, LEDR(7 downto 0));
-		  
+        port map(clk, reset, a_in, b_in, control, status, r);
 
 end arch_ASM_mult;
