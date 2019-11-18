@@ -1,0 +1,91 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use work.definitions.all;
+
+entity data_path is
+    port( clk, reset : in  std_logic;
+          a_in, b_in : in  std_logic_vector (W_FACTORS-1 downto 0);
+          control    : in  std_logic_vector (W_CONTROL-1 downto 0);
+          status     : out std_logic_vector (W_STATUS-1  downto 0);
+          r          : out std_logic_vector (W_RESULT-1  downto 0) );
+end data_path;
+
+architecture arch_dp of data_path is
+
+    component asynch_reg
+        generic (n: natural := 8);
+        port( clk, rst, load : in  std_logic;
+              din            : in  std_logic_vector (n-1 downto 0);
+              dout           : out std_logic_vector (n-1 downto 0) );
+    end component asynch_reg;
+	
+    component adder_sub
+        generic( n: natural := 8 );
+        port( a   : in std_logic_vector(n-1 downto 0);
+              b   : in std_logic_vector(n-1 downto 0);
+              op  : in std_logic;
+              res : out std_logic_vector(n-1 downto 0) );
+    end component adder_sub;
+    
+    component left_right_shift_reg
+        generic (n: natural := 6);
+        port( clk, reset, load : in  std_logic;
+              r_shf, l_shf     : in  std_logic;
+              data_in          : in  std_logic_vector(n-1 downto 0);    
+              data_out         : out std_logic_vector(n-1 downto 0) );
+    end component left_right_shift_reg;
+
+    -- INTERMEDIATE SIGNALS...
+    signal op_a, op_b, op_n, op_acc, substraction, acc_plus_a: std_logic_vector(W_RESULT-1 downto 0);
+	signal mux_n_out, mux_acc_out: std_logic_vector(W-RESULT-1 downto 0);
+	
+	signal int_zero: std_logic_vector(W_RESULT-1 downto 0):= (others => 0);
+	signal  int_one: std_logic_vector(W_RESULT-1 downto 0):= (others => 0);
+	int_one(0) <= '1';
+	signal int_four: std_logic_vector(W-RESULT-1 downto 0):= (others => 0);
+	int_four(2) <= '1';
+	
+	-- Result of the multiplication
+	r <= op_acc;
+	
+begin
+
+    -- MODULES AND INTERCONNECTIONS...
+	
+	-- Firstly instantiate as many elements as needed
+	REG_A: left_right_shift_reg generic map(n=W_RESULT)
+								port map(clk, reset, control(ld_ra), '0', shl_ra, a_in, op_a);
+	
+	REG_B: left_right_shift_reg generic map(n=W_RESULT)
+								port map(clk, reset, control(ld_rb), shr_rb, '0', b_in, op_b);
+	
+	
+	REG_N: asynch_reg   generic map(n=W_RESULT)
+						port map(clk, reset, control(ld_rn), mux_n, op_n);
+	
+	REG_ACC: asynch_reg generic map(n=W_RESULT)
+						port map(clk, reset, control(ld_racc), mux_acc, op_acc);
+	
+	
+	SUB: adder_sub  generic map(n=W_RESULT)
+					port map(op_n, int_one, '0', substraction);
+	
+	ADD: adder_sub  generic map(n=W_RESULT)
+					port map(op_a, op_acc, '1', acc_plus_a);
+
+
+	-- Multiplexors
+	if(control(mux_n) = '0')then
+		mux_n_out <= substraction;
+	else
+		mux_n_out <= int_four;
+	end if;
+	
+	if(control(mux_acc) = '0')then
+		mux_n_out <= acc_plus_a;
+	else
+		mux_n_out <= int_zero;
+	end if;
+
+end arch_dp;

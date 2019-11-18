@@ -41,12 +41,12 @@ begin
                 end if;
 				
             when S_load =>
-            control(ld_ra)   <= '1';
-            control(ld_rb)   <= '1';
-            control(ld_rn)   <= '1';
+                control(ld_ra)   <= '1';
+                control(ld_rb)   <= '1';
+                control(ld_rn)   <= '1';
 				control(ld_racc) <= '1';
 
-				control(mux_n)   <= '1';
+				control(mux_n) <= '1';
 				control(mux_acc) <= '1';
 				
 				control(shl_ra) <= '0';
@@ -55,20 +55,7 @@ begin
 				NEXT_STATE <= S_idle;
                 
             when S_idle =>
-				
-				control(ld_ra)   <= '0';
-            control(ld_rb)   <= '0';
-            control(ld_rn)   <= '0';
-				control(ld_racc) <= '0';
-				
-				control(mux_n)   <= '1'; --Or 'X'
-				control(mux_acc) <= '1'; --Or 'X'
-				
-				control(shl_ra) <= '0';
-				control(shr_rb) <= '0';
-				
-				
-            if(status(zero) = '1')then
+                if(status(zero) = '1')then
 					NEXT_STATE <= S_init;
 				else
 					if(status(b0) = '1')then
@@ -80,28 +67,22 @@ begin
 				
                 
             when S_acc =>
-            control(mux_acc) <= '0';
+                control(mux_acc) <= '0';
 				control(shl_ra)  <= '1';
 				control(shr_rb)  <= '1';
 				control(mux_n)   <= '0';
 				control(ld_rn)   <= '1';
-				control(ld_racc) <= '1';
-				
-				control(ld_ra)   <= '0';
-            control(ld_rb)   <= '0';
+				control(ld_r_acc)<= '1';
 				
 				NEXT_STATE <= S_idle;
                 
             when S_iter =>
-            control(mux_acc) <= '0';
+                control(mux_acc) <= '0';
 				control(shl_ra)  <= '1';
 				control(shr_rb)  <= '1';
 				control(mux_n)   <= '0';
 				control(ld_rn)   <= '1';
-				control(ld_racc) <= '0';
-				
-				control(ld_ra)   <= '0';
-            control(ld_rb)   <= '0';
+				control(ld_r_acc)<= '1';
 				
 				NEXT_STATE <= S_idle;
                 

@@ -37,7 +37,7 @@ architecture arch_dp of data_path is
     end component left_right_shift_reg;
 
     -- INTERMEDIATE SIGNALS...
-    signal op_a, op_b: std_logic_vector(W_FACTORS-1 downto 0);
+   signal op_a, op_b: std_logic_vector(W_RESULT-1 downto 0);
 	signal op_n, op_acc, substraction, acc_plus_a: std_logic_vector(W_RESULT-1 downto 0);
 	signal mux_n_out, mux_acc_out: std_logic_vector(W_RESULT-1 downto 0);
 	
@@ -50,7 +50,6 @@ architecture arch_dp of data_path is
 	
 	
 begin
-    -- r <= "10101010";
 	r <= op_acc;
 	num_one(0) <= '1';
 	num_four(2) <= '1';
@@ -58,65 +57,44 @@ begin
     -- MODULES AND INTERCONNECTIONS...
 	
 	-- Firstly instantiate as many elements as needed
-	REG_A: left_right_shift_reg generic map(n => W_FACTORS)
-								port map(clk, reset, control(ld_ra), '0', control(shl_ra), a_in, op_a);
+	REG_A: left_right_shift_reg generic map(n => W_RESULT)
+										 port map(clk, reset, control(ld_ra), '0', control(shl_ra), (W_RESULT-1 downto W_FACTORS => '0')&a_in, op_a);
 	
-	REG_B: left_right_shift_reg generic map(n => W_FACTORS)
-								port map(clk, reset, control(ld_rb), control(shr_rb), '0', b_in, op_b);
+	REG_B: left_right_shift_reg generic map(n => W_RESULT)
+										 port map(clk, reset, control(ld_rb), control(shr_rb), '0', (W_RESULT-1 downto W_FACTORS => '0')&b_in, op_b);
 	
 	
 	REG_N: asynch_reg   generic map(n => W_RESULT)
-						port map(clk, reset, control(ld_rn), mux_n_out, op_n);
+							  port map(clk, reset, control(ld_rn), mux_n_out, op_n);
 	
 	REG_ACC: asynch_reg generic map(n => W_RESULT)
-						port map(clk, reset, control(ld_racc), mux_acc_out, op_acc);
+							  port map(clk, reset, control(ld_racc), mux_acc_out, op_acc);
 	
 	
 	SUB: adder_sub  generic map(n => W_RESULT)
-					port map(op_n, num_one, '0', substraction);
+						 port map(op_n, num_one, '1', substraction);
 	
 	ADD: adder_sub  generic map(n => W_RESULT)
-					port map("0000"&op_a, op_acc, '1', acc_plus_a);
+						 port map(op_a, op_acc, '0', acc_plus_a);
 
 	process(control,substraction,acc_plus_a)
 	begin
-	
 		-- Multiplexors
-		
---		if(control(mux_n) = '0')then
---			mux_n_out <= substraction;
---		else
---			mux_n_out <= num_four;
---		end if;
-		
---		if(control(mux_acc) = '0')then
---			mux_n_out <= acc_plus_a;
---		else
---			mux_n_out <= num_zero;
---		end if;
-		
 		CASE control(mux_n) IS
 		WHEN '0' => mux_n_out <= substraction;
-        WHEN OTHERS => mux_n_out <= num_four;
+      WHEN OTHERS => mux_n_out <= num_four;
 		END CASE;
 		
 		CASE control(mux_acc) IS
 		WHEN '0' => mux_acc_out <= acc_plus_a;
-        WHEN OTHERS => mux_acc_out <= num_zero;
+      WHEN OTHERS => mux_acc_out <= num_zero;
 		END CASE;
-		
-		
-		
 	end process;
 	
 	process(op_b,op_n)
 	begin
 		-- Comparators
-		if('1'=op_b(0))then
-			status(b0)<='1';
-		else
-			status(b0)<='0';
-		end if;
+		status(b0) <= op_b(0);
 		
 		if(num_zero=op_n)then
 			status(zero)<='1';
