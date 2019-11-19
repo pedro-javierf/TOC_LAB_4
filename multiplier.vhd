@@ -39,11 +39,14 @@ architecture arch_ASM_mult of ASM_multiplier is
     component conv_7seg
     Port ( x : in  STD_LOGIC_VECTOR (3 downto 0);
            display : out  STD_LOGIC_VECTOR (6 downto 0));
+           
 end component conv_7seg;
 
     signal status  : std_logic_vector(W_STATUS-1  downto 0);
     signal control : std_logic_vector(W_CONTROL-1 downto 0);
     signal display : std_logic_vector(6 downto 0);
+    signal disp_enable: std_logic_vector(3 downto 0);
+    
 begin
 
     U_CNTRL: controller
@@ -52,7 +55,9 @@ begin
     U_DP: data_path
         port map(clk, reset, a_in, b_in, control, status, r);
 
-    DSP: displays port map(reset, clk, "11", display, "1100");
+    DSP: displays port map(reset, clk, "11", display, disp_enable);
+    
+    CONV: conv_7seg port map(r(W_RESULT-1 downto W_FACTORS) ,display);
     
 
 end arch_ASM_mult;
