@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1574247548">
+  <File Type="BITSTR-BMM" Name="ASM_multiplier_bd.bmm"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="ASM_multiplier_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="ASM_multiplier_timing_summary_init.rpt"/>
+  <File Type="ROUTE-PWR" Name="ASM_multiplier_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="ASM_multiplier.tcl"/>
+  <File Type="OPT-TIMING" Name="ASM_multiplier_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="ASM_multiplier_opt.dcp"/>
+  <File Type="ROUTE-PWR-SUM" Name="ASM_multiplier_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="ASM_multiplier_reports.tcl"/>
+  <File Type="OPT-DRC" Name="ASM_multiplier_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="ASM_multiplier.hwdef"/>
+  <File Type="PWROPT-DCP" Name="ASM_multiplier_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="ASM_multiplier_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="ASM_multiplier_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="ASM_multiplier_placed.dcp"/>
+  <File Type="PLACE-IO" Name="ASM_multiplier_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="ASM_multiplier_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="ASM_multiplier_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="ASM_multiplier_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="ASM_multiplier_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="ASM_multiplier_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="ASM_multiplier_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BGN" Name="ASM_multiplier.bgn"/>
+  <File Type="PLACE-TIMING" Name="ASM_multiplier_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="ASM_multiplier_postplace_pwropt.dcp"/>
+  <File Type="BG-BIN" Name="ASM_multiplier.bin"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="ASM_multiplier_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="ASM_multiplier_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="ASM_multiplier_drc_physopted.rpt"/>
+  <File Type="BITSTR-MSK" Name="ASM_multiplier.msk"/>
+  <File Type="PHYSOPT-TIMING" Name="ASM_multiplier_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="ASM_multiplier_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="ASM_multiplier_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="ASM_multiplier_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="ASM_multiplier_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="ASM_multiplier_drc_routed.pb"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="ASM_multiplier.ltx"/>
+  <File Type="ROUTE-DRC-RPX" Name="ASM_multiplier_drc_routed.rpx"/>
+  <File Type="BITSTR-MMI" Name="ASM_multiplier.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="ASM_multiplier_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="ASM_multiplier_methodology_drc_routed.rpx"/>
+  <File Type="BITSTR-SYSDEF" Name="ASM_multiplier.sysdef"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="ASM_multiplier_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="ASM_multiplier_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="ASM_multiplier_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="ASM_multiplier_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="ASM_multiplier_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="ASM_multiplier_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="ASM_multiplier_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="ASM_multiplier_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="ASM_multiplier_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="ASM_multiplier_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="ASM_multiplier_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="ASM_multiplier_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="ASM_multiplier_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="ASM_multiplier_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="ASM_multiplier_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="ASM_multiplier_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="ASM_multiplier_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="ASM_multiplier_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="ASM_multiplier_bus_skew_postroute_physopted.pb"/>
+  <File Type="BG-BIT" Name="ASM_multiplier.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="ASM_multiplier_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-RBT" Name="ASM_multiplier.rbt"/>
+  <File Type="BITSTR-NKY" Name="ASM_multiplier.nky"/>
+  <File Type="BG-DRC" Name="ASM_multiplier.drc"/>
+  <File Type="RDI-RDI" Name="ASM_multiplier.vdi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../../../hlocal/TOC_LAB_4-master/adder_std.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../hlocal/TOC_LAB_4-master/adder_sub_std.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../hlocal/TOC_LAB_4-master/asynch_reg.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../hlocal/TOC_LAB_4-master/definitions.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../hlocal/TOC_LAB_4-master/controller.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../hlocal/TOC_LAB_4-master/conv_7seg.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../hlocal/TOC_LAB_4-master/data_path.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../hlocal/debouncer.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../hlocal/TOC_LAB_4-master/displays.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../hlocal/TOC_LAB_4-master/left_right_shift_reg.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../hlocal/TOC_LAB_4-master/multiplier.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="ASM_multiplier"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PPRDIR/../../../hlocal/TOC_LAB_4-master/Basys3_Master.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+      <Desc>Default settings for Implementation.</Desc>
+    </StratHandle>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>

@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Wed Nov 20 11:58:18 2019
+# Process ID: 11808
+# Current directory: C:/Users/usuario_local/project_4/project_4.runs/synth_1
+# Command line: vivado.exe -log ASM_multiplier.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source ASM_multiplier.tcl
+# Log file: C:/Users/usuario_local/project_4/project_4.runs/synth_1/ASM_multiplier.vds
+# Journal file: C:/Users/usuario_local/project_4/project_4.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source ASM_multiplier.tcl -notrace
